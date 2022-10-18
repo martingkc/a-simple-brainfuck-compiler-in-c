@@ -71,21 +71,26 @@ int* compile(char* string, int length){
 				j++; 
 				break;
 			case '.': 
-				printf("%c", transl[j]+'A'-1);
+				printf("%c", transl[j]);
 				break; 
 			case',': 
 				scanf("%c", transl[j]); 
 				break;
 			case'[': 
-				if(transl[j] == 0)
-					tmp = j; 
-					j = findparl(tmp, string)+1; 
+
+				if(transl[j] == 0){
+					tmp = i; 
+					i = findparl(tmp, string); 
+					
+				}
 				break;
 
 			case']': 
-				if(transl[j] != 0)
-					tmp = j; 
-					j = findparr(tmp, string)-1; 
+				if(transl[j] != 0){
+					tmp = i; 
+					i = findparr(tmp, string);
+					
+				}
 				break;
 
 
@@ -101,22 +106,22 @@ int* compile(char* string, int length){
 {
 	FILE *f;
 	f = fopen(argv[1], "r"); 
-	char str[1024]; 
+	char str[3000] = {0}; 
+	char tmp[1024]; 
 	int len;
 	int *trans; 
 
 	
-	while(fscanf(f, "%s", str)!=-1){
-
-		len = strlen(str); 
-		trans= compile(str, len);
+	while(fscanf(f, "%s", tmp)!=-1){
+		strcat(str,tmp);
+		
 	}
 
-	
-	printf("%s", str);
+	len = strlen(str); 
+	trans= compile(str, len);
 	 
 	for(int i = 0; i<MAX; i++){
-		printf("%d", *(trans + i)); 
+		//printf("%d", *(trans + i)); 
 	}
 	
 	fclose(f);
