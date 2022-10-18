@@ -5,7 +5,7 @@
 
 int findparl(int tmp, char* string){
 	int countpar; 
-	int passedpar, i; 
+	int i; 
 	i = tmp; 
 	countpar = -1; 
 
@@ -29,7 +29,7 @@ int findparl(int tmp, char* string){
 }
 int findparr(int tmp, char* string){
 	int countpar; 
-	int passedpar, i; 
+	int i; 
 	i = tmp; 
 	countpar = -1; 
 
